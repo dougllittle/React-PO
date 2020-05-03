@@ -1,5 +1,6 @@
-import React, {Component} from 'react';
-import './css/App.css';
+import React, {Component} from 'react'
+import {FxRow, ControlsRow} from './Controls.js'
+import './css/App.css'
 
 class App extends Component {
     constructor() {
@@ -23,66 +24,11 @@ class App extends Component {
                   <div id="po-screen" className="po-operate-piece">
                   </div>
                   <div id="po-controls" className="po-operate-piece">
-                    <div className="po-row" id="po-controls-1">
-                      <div className={["po-row-button", "po-fx"].join(" ")}>
-                      </div>
-                      <div className={["po-row-button", "po-fx"].join(" ")}>
-                      </div>
-                      <div className={["po-row-button", "po-fx"].join(" ")}>
-                      </div>
-                      <div className={["po-row-button", "po-fx"].join(" ")}>
-                      </div>
-                      <div className={["po-row-button", "po-last", "po-fx"].join(" ")}>
-                      </div>
-                    </div>
-                    <div className="po-row" id="po-controls-2">
-                      <div className="po-row-button">
-                      </div>
-                      <div className="po-row-button">
-                      </div>
-                      <div className="po-row-button">
-                      </div>
-                      <div className="po-row-button">
-                      </div>
-                      <div className={["po-row-button", "po-last", "po-fx"].join(" ")}>
-                      </div>
-                    </div>
-                    <div className="po-row" id="po-controls-3">
-                      <div className="po-row-button">
-                      </div>
-                      <div className="po-row-button">
-                      </div>
-                      <div className="po-row-button">
-                      </div>
-                      <div className="po-row-button">
-                      </div>
-                      <div className={["po-row-button", "po-last", "po-fx"].join(" ")}>
-                      </div>
-                    </div>
-                    <div className="po-row" id="po-controls-4">
-                      <div className="po-row-button">
-                      </div>
-                      <div className="po-row-button">
-                      </div>
-                      <div className="po-row-button">
-                      </div>
-                      <div className="po-row-button">
-                      </div>
-                      <div className={["po-row-button", "po-last", "po-fx"].join(" ")}>
-                      </div>
-                    </div>
-                    <div className="po-row" id="po-controls-5">
-                      <div className="po-row-button">
-                      </div>
-                      <div className="po-row-button">
-                      </div>
-                      <div className="po-row-button">
-                      </div>
-                      <div className="po-row-button">
-                      </div>
-                      <div className={["po-row-button", "po-last", "po-fx"].join(" ")}>
-                      </div>
-                    </div>
+                    <FxRow />
+                    <ControlsRow id="po-controls-2" numDex="0" fxNum="0" />
+                    <ControlsRow id="po-controls-3" numDex="4" fxNum="1" />
+                    <ControlsRow id="po-controls-4" numDex="8" fxNum="2" />
+                    <ControlsRow id="po-controls-5" numDex="12" fxNum="3" />
                   </div>
                 </div>
               </div>
