@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import './css/Controls.css'
 import $ from 'jquery'
+import 'input-knob'
 
 class FxRow extends Component{
 	constructor() {
@@ -17,37 +18,12 @@ class FxRow extends Component{
 
     componentDidMount(){
     	const $dial = $(".dial");
-    	const radius	= $dial.outerWidth() / 2;
-		const center_x	= $dial.offset().left + radius;
-		const center_y	= $dial.offset().top + radius;
-
-		function get_degrees(mouse_x, mouse_y) {
-			const radians	= Math.atan2(mouse_x - center_x, mouse_y - center_y);
-			const degrees	= Math.round((radians * (180 / Math.PI) * -1) + 100);
-			return degrees;
-		}	
-
 		$dial.each(function(){
-			$(this).on('mousedown', function(event) {
-
-				let $knob = $(this)
-
-				// Calculate the mouse position in degrees
-				const click_degrees = get_degrees(event.pageX, event.pageY);
-
-				$(document).bind('mousemove', click_degrees, function(event) {
-
-					// Calculate the mouse move position, removing starting point
-					const degrees = get_degrees(event.pageX, event.pageY) - click_degrees;
-
-					$knob.css('transform', 'rotate('+degrees+'deg)');
-				});
+			$(this).on('knob-move-change', function(){
+				var $linearGradient = "linear-gradient(to bottom,transparent " + (100 - Math.round($(this).val())) + "%, rgba(0,0,0,.5) " + (100 - Math.round($(this).val())) + "% " + Math.round($(this).val()) + "%)";
+				$(this).parent().css("background", $linearGradient);
 			});
 		})
-
-		$(document).on('mouseup', function() {
-			$(document).unbind('mousemove');
-		});
     }
 
     render(){
@@ -62,11 +38,17 @@ class FxRow extends Component{
 	          <div className={["po-row-button", "po-fx"].join(" ")}>
 	          	<button className="po-btn">BPM</button>
 	          </div>
-	          <div className={["po-row-button", "po-fx", "po-knob"].join(" ")}>
-	          	<button className={["po-btn", "dial"].join(" ")}><span className="hidden-visually">Knob A</span></button>
+	          <div className={["po-row-button", "po-fx", "po-knob", "knob-a"].join(" ")}>
+	          	<input-knob class={["po-btn", "dial"].join(" ")} value="0" scale="100" min="0" max="100">
+	          		<div className="mark"></div>
+	          		<span className="indicator"></span>
+	          	</input-knob>
 	          </div>
-	          <div className={["po-row-button", "po-last", "po-fx", "po-knob"].join(" ")}>
-	          	<button className={["po-btn", "dial"].join(" ")}><span className="hidden-visually">Knob B</span></button>
+	          <div className={["po-row-button", "po-last", "po-fx", "po-knob", "knob-b"].join(" ")}>
+	          	<input-knob class={["po-btn", "dial"].join(" ")} value="0" scale="100" min="0" max="100">
+	          		<div className="mark"></div>
+	          		<span className="indicator"></span>
+	          	</input-knob>
 	          </div>
 	        </div>
 		)
