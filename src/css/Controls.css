@@ -33,6 +33,10 @@
 	border-radius:100%;
 }
 
+.po-row-button.po-knob{
+	background:gray;
+}
+
 .po-row-button.po-knob .po-btn{
 	position:relative;
 	display: flex;
