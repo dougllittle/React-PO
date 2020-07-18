@@ -13,7 +13,7 @@ class FxRow extends Component{
     }
     
     handleChange(event){
-
+		this.props.handleChange(event.target.innerText);
     }
 
     componentDidMount(){
@@ -30,13 +30,13 @@ class FxRow extends Component{
     	return(
 	    	<div className="po-row" id="po-controls-1">
 	          <div className={["po-row-button", "po-fx"].join(" ")}>
-	          	<button className="po-btn">Sound</button>
+	          	<button onClick={this.handleChange} className="po-btn">Sound</button>
 	          </div>
 	          <div className={["po-row-button", "po-fx"].join(" ")}>
-	          	<button className="po-btn">Pattern</button>
+	          	<button onClick={this.handleChange} className="po-btn">Pattern</button>
 	          </div>
 	          <div className={["po-row-button", "po-fx"].join(" ")}>
-	          	<button className="po-btn">BPM</button>
+	          	<button onClick={this.handleChange} className="po-btn">BPM</button>
 	          </div>
 	          <div className={["po-row-button", "po-fx", "po-knob", "knob-a"].join(" ")}>
 	          	<input-knob class={["po-btn", "dial"].join(" ")} value="0" scale="100" min="0" max="100">
@@ -66,7 +66,7 @@ class ControlsRow extends Component{
     }
     
     handleChange(event){
-
+    	this.props.handleChange(event.target.innerText);
     }
 
     applyControls(ind){
@@ -78,19 +78,19 @@ class ControlsRow extends Component{
     	return(
 	        <div className="po-row" data-numdex={this.props.numDex} id={this.props.id}>
 	          <div className="po-row-button">
-	          	<button className="po-btn">{1 + parseInt(this.props.numDex)}</button>
+	          	<button onClick={this.handleChange} className="po-btn">{1 + parseInt(this.props.numDex)}</button>
 	          </div>
 	          <div className="po-row-button">
-	          	<button className="po-btn">{2 + parseInt(this.props.numDex)}</button>
+	          	<button onClick={this.handleChange} className="po-btn">{2 + parseInt(this.props.numDex)}</button>
 	          </div>
 	          <div className="po-row-button">
-	          	<button className="po-btn">{3 + parseInt(this.props.numDex)}</button>
+	          	<button onClick={this.handleChange} className="po-btn">{3 + parseInt(this.props.numDex)}</button>
 	          </div>
 	          <div className="po-row-button">
-	          	<button className="po-btn">{4 + parseInt(this.props.numDex)}</button>
+	          	<button onClick={this.handleChange} className="po-btn">{4 + parseInt(this.props.numDex)}</button>
 	          </div>
 	          <div className={["po-row-button", "po-last", "po-fx"].join(" ")}>
-	          	<button className="po-btn">{this.applyControls(this.props.fxNum)}</button>
+	          	<button onClick={this.handleChange} className="po-btn">{this.applyControls(this.props.fxNum)}</button>
 	          </div>
 	        </div>
 		)
