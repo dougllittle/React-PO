@@ -8,13 +8,19 @@ class App extends Component {
         super()
         this.state = {
             activeBtns: "",
+            vals:[0,0],
         }
-        this.handleChange = this.handleChange.bind(this)
+        this.handleChange = this.handleChange.bind(this);
+        this.handleDials = this.handleDials.bind(this);
     }
     
     handleChange(activeBtns){
       console.log(activeBtns);
       this.setState({activeBtns});
+    }
+
+    handleDials(vals){
+      this.setState({vals});
     }
     
     render() {
@@ -23,9 +29,9 @@ class App extends Component {
             <div id="UI">
               <div id="po-left-wrap">
                 <div id="po-operate">
-                  <PoScreen inputValue={this.state.activeBtns} />
+                  <PoScreen inputValue={this.state.activeBtns} dialVals={this.state.vals} />
                   <div id="po-controls" className="po-operate-piece">
-                    <FxRow handleChange={this.handleChange} />
+                    <FxRow handleDials={this.handleDials} handleChange={this.handleChange} />
                     <ControlsRow handleChange={this.handleChange} id="po-controls-2" numDex="0" fxNum="0" />
                     <ControlsRow handleChange={this.handleChange} id="po-controls-3" numDex="4" fxNum="1" />
                     <ControlsRow handleChange={this.handleChange} id="po-controls-4" numDex="8" fxNum="2" />

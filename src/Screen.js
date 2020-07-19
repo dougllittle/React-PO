@@ -23,7 +23,14 @@ class PoScreen extends Component{
     render(){
     	return(
 			<div id="po-screen" className="po-operate-piece">
-				{this.props.inputValue}
+				<div className="po-screen_main">
+					{this.props.inputValue}
+				</div>
+				<div className="po-screen_bottom">
+					{this.props.dialVals.map((item, index)=>(
+						<div key={index} className="dial_val">{item}</div>
+					))}
+				</div>
 			</div>
 		)
     }

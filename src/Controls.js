@@ -9,7 +9,7 @@ class FxRow extends Component{
         this.state = {
             
         }
-        this.handleChange = this.handleChange.bind(this)
+        this.handleChange = this.handleChange.bind(this);
     }
     
     handleChange(event){
@@ -17,11 +17,17 @@ class FxRow extends Component{
     }
 
     componentDidMount(){
+    	var props = this.props;
     	const $dial = $(".dial");
 		$dial.each(function(){
 			$(this).on('knob-move-change', function(){
 				var $linearGradient = "linear-gradient(to bottom,transparent " + (100 - Math.round($(this).val())) + "%, rgba(0,0,0,.5) " + (100 - Math.round($(this).val())) + "% " + Math.round($(this).val()) + "%)";
 				$(this).parent().css("background", $linearGradient);
+				const vals = [];
+				$dial.each(function(){
+					vals.push(Math.round($(this).val()));
+				});
+				props.handleDials(vals);
 			});
 		})
     }
@@ -66,6 +72,7 @@ class ControlsRow extends Component{
     }
     
     handleChange(event){
+      	console.log(event.target.innerText);
     	this.props.handleChange(event.target.innerText);
     }
 
