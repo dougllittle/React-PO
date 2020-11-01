@@ -15,7 +15,6 @@ class App extends Component {
     }
     
     handleChange(activeBtns){
-      console.log(activeBtns);
       this.setState({activeBtns});
     }
 

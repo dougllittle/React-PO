@@ -72,7 +72,6 @@ class ControlsRow extends Component{
     }
     
     handleChange(event){
-      	console.log(event.target.innerText);
     	this.props.handleChange(event.target.innerText);
     }
 
